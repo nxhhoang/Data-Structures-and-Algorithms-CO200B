@@ -1,0 +1,1632 @@
+% FORMAT AND PACKAGES
+% {
+\documentclass[a4paper]{article}
+\usepackage{a4wide,amssymb,epsfig,latexsym,multicol,array,hhline,fancyhdr}
+\usepackage{vntex}
+\usepackage{amsmath}
+\usepackage{lastpage}
+\usepackage[lined,boxed,commentsnumbered]{algorithm2e}
+\usepackage{enumerate}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{minted}
+
+\usepackage{array}            % Hỗ trợ các thao tác trên bảng (tabular)
+\usepackage{colortbl}         % Tô màu cho ô trong bảng
+\usepackage{graphicx}         % Hỗ trợ đồ họa
+\usepackage{tikz}             % Vẽ hình (mũi tên, đồ thị, sơ đồ, ...)
+\usetikzlibrary{arrows.meta}
+
+\usepackage{algorithm}
+\usepackage{algorithmicx}
+\usepackage{algpseudocode}
+\usepackage{xcolor}
+\usepackage[table]{xcolor}
+\definecolor{custombg}{rgb}{0.95,0.95,0.92} % Màu nền giống chữ "operator"
+\usepackage{graphicx}							% Standard graphics package
+\usepackage{array}
+\usepackage{tabularx, caption}
+\usepackage{multirow}
+\usepackage{multicol}
+\usepackage{rotating}
+\usepackage{graphics}
+\usepackage{geometry}
+\geometry{margin=1in}
+\usepackage{setspace}
+\usepackage{epsfig}
+\usepackage{tikz}
+\usepackage{xfrac}
+\usepackage{bm}
+\usepackage[colorlinks]{hyperref}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.17}
+\usepackage[dvipsnames]{xcolor} % Sử dụng màu mở rộng
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.97,0.98,0.90}
+\lstdefinestyle{mystyle}{
+	backgroundcolor=\color{backcolour},   
+	commentstyle=\color{codegreen},
+	keywordstyle=\color{blue},
+	numberstyle=\footnotesize\color{codegray},
+	stringstyle=\color{codepurple},
+	basicstyle=\ttfamily\small,
+	breakatwhitespace=false,         
+	breaklines=true,                 
+	captionpos=b,                    
+	keepspaces=true,                 
+	numbers=left,                    
+	numbersep=10pt,                  
+	showspaces=false,                
+	showstringspaces=false,
+	showtabs=false,                  
+	tabsize=4,
+	language=C++,
+}
+\lstset{style=mystyle}
+% Của Hiển
+\usepackage{minted} 
+\usepackage{enumitem}
+% \setlist[itemize]{leftmargin=*} % Điều chỉnh thụt lề của itemize
+%
+
+% \usepackage[acronym,toc]{glossaries}
+% \usepackage[symbols,nogroupskip,nonumberlist]{glossaries-extra}
+\usepackage[
+ sort=none,% no sorting or indexing required
+ abbreviations,% create list of abbreviations
+ symbols,% create list of symbols
+ stylemods,style=list, % set the default glossary style
+ nogroupskip, nonumberlist, nomain
+]{glossaries-extra}
+
+
+% FORMATTING
+% {
+\DeclareMathOperator{\arccot}{arccot}
+\captionsetup[table]{name=Table}
+\captionsetup[figure]{name=Figure}
+\newenvironment{Description}{\list{}{%
+    \let\makelabel\descriptionlabel    % this comes from the original description environment
+    \setlength{\rightmargin}{\leftmargin}% this comes from the original quote environment
+    \setlength{\labelwidth}{0pt}%          this is new
+    }}{\endlist}
+    
+\hypersetup{urlcolor=blue,linkcolor=black,citecolor=black,colorlinks=true} 
+\usetikzlibrary{arrows,snakes,backgrounds}
+\definecolor{mathblue}{RGB}{0,114,188}
+% \makeatletter  \def\m@th{\mathsurround\z@\color{mathblue}} \makeatother
+% \everymath{\color{mathblue}}
+% \setmathfont[Color=000000]{Arial}
+%\usepackage{pstcol} 								% PSTricks with the standard color package
+\newtheorem{theorem}{{\bf Theorem}}
+\newtheorem{property}{{\bf Property}}
+\newtheorem{proposition}{{\bf Proposition}}
+\newtheorem{corollary}[proposition]{{\bf Corollary}}
+\newtheorem{lemma}[proposition]{{\bf Lemma}}
+
+\AtBeginDocument{\renewcommand{\listfigurename}{List of Figures}}
+\AtBeginDocument{\renewcommand{\listtablename}{List of Tables}}
+\AtBeginDocument{\renewcommand*\contentsname{Contents}}
+\AtBeginDocument{\renewcommand*\refname{References}}
+%\usepackage{fancyhdr}
+
+\setlength{\headheight}{40pt}
+\pagestyle{fancy}
+\fancyhead{} % clear all header fields
+\fancyhead[L]{
+ \begin{tabular}{rl}
+    \begin{picture}(25,15)(0,0)
+    \put(0,-8){\includegraphics[width=8mm, height=8mm]{hcmut.png}}
+    %\put(0,-8){\epsfig{width=10mm,figure=hcmut.eps}}
+   \end{picture}&
+	%\includegraphics[width=8mm, height=8mm]{hcmut.png} & %
+	\begin{tabular}{l}
+		\textbf{\bf \ttfamily University of Technology, Ho Chi Minh City}\\
+		\textbf{\bf \ttfamily Faculty of Computer Science and Engineering}
+	\end{tabular} 	
+ \end{tabular}
+}
+\fancyhead[R]{
+	\begin{tabular}{l}
+		\tiny \bf \\
+		\tiny \bf 
+	\end{tabular}  }
+\fancyfoot{} % clear all footer fields
+\fancyfoot[L]{\scriptsize \ttfamily Assignment for Mathematical Modeling - Academic year 2022 - 2023}
+\fancyfoot[R]{\scriptsize \ttfamily Page {\thepage}/\pageref{LastPage}}
+\renewcommand{\headrulewidth}{0.3pt}
+\renewcommand{\footrulewidth}{0.3pt}
+
+\setcounter{secnumdepth}{4}
+\setcounter{tocdepth}{4}
+
+\makeatletter
+\newcounter {subsubsubsection}[subsubsection]
+\renewcommand\thesubsubsubsection{\thesubsubsection .\@alph\c@subsubsubsection}
+\newcommand\subsubsubsection{\@startsection{subsubsubsection}{4}{\z@}%
+                                     {-3.25ex\@plus -1ex \@minus -.2ex}%
+                                     {1.5ex \@plus .2ex}%
+                                     {\normalfont\normalsize\bfseries}}
+\newcommand*\l@subsubsubsection{\@dottedtocline{3}{10.0em}{4.1em}}
+\newcommand*{\subsubsubsectionmark}[1]{}
+% \def\m@th{\mathsurround\z@\color{mathblue}}
+\makeatother
+% }
+% }
+
+% ACRONYMS & SYMBOLS
+% {
+% \makeglossaries
+\setabbreviationstyle{long-short}
+\newabbreviation{ode}{ODE}{(First-Order) Ordinary Differential Equation}
+\newabbreviation{ivp}{IVP}{Initial-Value Problem}
+\newabbreviation{lte}{LTE}{Local Truncation Error}
+\newabbreviation{ds}{DS}{Dynamical System}
+\newabbreviation{fig}{Fig.}{Figure}
+\newabbreviation{tab}{Tab.}{Table}
+\newabbreviation{sys}{Sys.}{System of Equations}
+\newabbreviation{eq}{Eq.}{Equation}
+\newabbreviation{eg}{e.g.}{For Example}
+\newabbreviation{ie}{i.e.}{That Is}
+% \glsnoexpandfields
+\glsxtrnewsymbol[description = {Set of natural numbers}]{natural}{\ensuremath{\mathbb{N}}}
+\glsxtrnewsymbol[description = {Set of real numbers}]{real}{\ensuremath{\mathbb{R}}}
+\glsxtrnewsymbol[description = {Set of positive real numbers}]{real_positive}{\ensuremath{\mathbb{R}^+}}
+
+% }
+
+\usetikzlibrary{shapes.geometric}
+
+% Define custom node style for rectangles
+\tikzset{
+    my node/.style={rectangle, fill=#1!20, draw=#1!75, text=black, align=center},
+    point/.style={circle, fill=black, minimum size=6pt, inner sep=0pt, text=white, font=\footnotesize, draw}
+}
+
+% DOCUMENT
+\begin{document}
+
+% TITLE PAGE
+\begin{titlepage}
+\begin{center}
+VIETNAM NATIONAL UNIVERSITY, HO CHI MINH CITY \\
+UNIVERSITY OF TECHNOLOGY \\
+FACULTY OF COMPUTER SCIENCE AND ENGINEERING
+\end{center}
+
+\vspace{1cm}
+
+\begin{figure}[h!]
+\begin{center}
+\includegraphics[width=3cm]{hcmut.png}
+\end{center}
+\end{figure}
+
+\vspace{1cm}
+
+
+\begin{center}
+\begin{tabular}{c}
+\multicolumn{1}{l}{\textbf{{\Large DATA STRUCTURES AND ALGORITHMS (CO200B)}}}\\
+~~\\
+\hline
+\\
+\multicolumn{1}{l}{\textbf{{\Large Assignment}}}\\
+\\
+\textbf{\textit{{\Huge “Segment Tree”}}}\\
+\\
+\hline
+\end{tabular}
+\end{center}
+
+\vspace{2cm}
+
+\begin{table}[h]
+\centering
+    \begin{tabular}{rl}
+    \hspace{3 cm}\textbf{Instructor(s)}:
+    & Nguyễn Đức Dũng\\
+
+    & \\[10pt]
+    \textbf{Students}: &  Nguyễn Xuân Huy Hoàng - 2311070 \emph{(Group TN01 - Team 126, \textbf{Leader})} \\
+    \end{tabular}
+\end{table}
+\vspace{4cm}
+\begin{center}
+{\footnotesize HO CHI MINH CITY, DECEMBER 2024}
+\end{center}
+\end{titlepage}
+
+\pagebreak
+\tableofcontents
+\pagebreak
+
+% Glossaries
+% {}
+\printunsrtglossary[type={symbols}, title={List of Symbols}]
+\printunsrtglossary[type={abbreviations}, title={List of Acronyms}]
+\pagebreak
+\listoffigures
+\listoftables
+\pagebreak
+\addcontentsline{toc}{section}{\listfigurename}
+\addcontentsline{toc}{section}{\listtablename}
+
+% }
+
+
+
+\pagebreak
+
+
+\section{Giới thiệu về Segment tree}
+\subsection{Giới thiệu}
+\hspace{0.5cm}Segment Tree (Cây phân đoạn) là một cấu trúc dữ liệu mạnh mẽ, được thiết kế để xử lý hiệu quả các bài toán truy vấn trên mảng như tính tổng, tìm giá trị lớn nhất/nhỏ nhất trong một đoạn, và cập nhật giá trị của các phần tử. Đây là một giải pháp lý tưởng cho các bài toán mà mảng đầu vào thay đổi thường xuyên và yêu cầu truy vấn nhanh chóng.\medskip
+
+\subsection{Lịch sử}
+\hspace{0.5cm}Segment Tree được giới thiệu trong lĩnh vực khoa học máy tính vào khoảng những năm 1970 bởi \textit{Jon Bentley}. Nó được phát triển nhằm giải quyết các bài toán liên quan đến xử lý tín hiệu số và quản lý bộ nhớ. Segment Tree nổi lên như một phương pháp tối ưu để giải quyết các vấn đề liên quan đến các phép toán trên đoạn con (range queries) trong thời gian ngắn.\medskip
+
+Cấu trúc của Segment Tree có khả năng phân chia bài toán lớn thành các bài toán con nhỏ hơn, dựa trên nguyên lý chia để trị (divide and conquer). Điều này giúp nó trở thành một công cụ hữu ích trong các lĩnh vực như xử lý hình ảnh, thống kê và cơ sở dữ liệu.
+
+\subsection{Một số bài toán về Range Query}
+
+
+\begin{itemize}[label = $\circ$]
+    \item \textit{Tính tổng đoạn (Range Sum Query)}\textit{: }
+    
+    Được sử dụng để tính tổng các phần tử trong một đoạn mảng bất kỳ. Khi mảng được cập nhật, cần phải cập nhật giá trị nhanh chóng mà không cần tính lại toàn bộ mảng. 
+    \item \textit{Truy vấn giá trị lớn nhất/nhỏ nhất (Range Minimum/Maximum Query):}
+    
+    Tìm giá trị nhỏ nhất hoặc lớn nhất trong một đoạn con của mảng. Điều này hữu ích trong các bài toán như tìm khoảng thời gian dài nhất mà hiệu suất không giảm hoặc tìm điểm cao nhất trong một đoạn thời gian.
+    \item \textit{Cập nhật phần tử nhanh chóng (Point Update):}
+    
+    Khi một phần tử trong mảng thay đổi, cần phải cập nhật giá trị này với độ phức tạp tối đa là \(O(\log n)\), phải nhanh hơn so với cập nhật tuyến tính. 
+    \item \textit{Truy vấn với điều kiện (Range Count Query): }
+    
+    Đếm số lượng phần tử trong một đoạn mảng thỏa mãn một điều kiện nào đó, ví dụ như đếm số sinh viên có điểm lớn hơn một mức cụ thể.
+    \item \textit{Bài toán bài toán liên quan đến khoảng thời gian (Interval Problems):}
+    
+    Những bài toán về quản lý thời gian biểu, đặt phòng hoặc kiểm tra xung đột trong khoảng thời gian.
+\end{itemize}
+\pagebreak
+\section{Thao tác trên Segment Tree trong các bài toán Range Query}
+\subsection{Xây dựng}
+\hspace{0.5cm}Cây phân đoạn có thể xây dựng bằng hai cách:\medskip
+
+\noindent $\square$ \textbf{Bottom - up}
+\begin{itemize}[label = $\circ$]
+    \item Quy trình
+    \begin{enumerate}
+        \item Khởi tạo các nút lá tương ứng với các phần tử trong mảng.
+        \item Di chuyển từ các nút lá lên gốc cây, tính giá trị cho từng nút cha dựa trên hai nút con của nó.
+    \end{enumerate}
+    \item Độ phức tạp: \texttt{O(n)} (với n là số phần tử có trong mảng)
+    \item Ví dụ:
+    \begin{itemize}[label = $\bullet$]
+        \item Nút lá lưu giá trị từ mảng ban đầu.
+        \item Nút cha lưu mối quan hệ từ hai nút con.
+        \[tree[i]\,=func(\,tree[2\, \cdot\, i],\, \,tree[2\, \cdot\, i + 1]) \text{ với $i$ là chỉ số tính từ 1}\]
+        \item $func$ là hàm tính tổng đối với bài toán tìm tổng hoặc là hàm tìm giá trị lớn nhất/nhỏ nhất đối với bài toán tìm giá trị tương ứng.
+        \item \textbf{Cách ghi $[a,\,b,\,c]$ thể hiện mối liên hệ giữa $a,\,b,\,c$}.
+    \end{itemize}
+\end{itemize}
+
+\begin{table}[tbh!]
+    \large
+    \begin{minipage}[t]{1.6in}
+        \begin{tikzpicture}
+            \node at (-1.5,0) {\texttt{[1]}};
+            \node at (-0.5,0) {\texttt{[2]}};
+            \node at (0.5,0) {\texttt{[3]}};
+            \node at (1.5,0) {\texttt{[4]}};
+            % \node {[1, 2]}
+            % child {node {left}}
+            % child {node {right}
+            %     child {node {child}}
+            %     child {node {child}}
+            % };
+            % \node {{[1, 2]}
+            % child {node {left}}
+            % chile {node {right}}
+            % };
+        \end{tikzpicture}
+    \end{minipage}
+    \begin{minipage}[c]{0.45in}
+        \begin{center}
+            \begin{tikzpicture}
+                \draw[-{Latex[length=3mm, width=2mm]},blue,line width=0.4mm] (0,0) -- (0.8,0) node[pos=0.33,above] {};
+            \end{tikzpicture}
+        \end{center}
+    \end{minipage}
+    \begin{minipage}[t]{1.6in}
+        \begin{tikzpicture}
+            \node {\texttt{[1, 2]}}
+            child {node {\texttt{[1]}}}
+            child {node {\texttt{[2]}}
+            };
+            \node at(2, 0) {\texttt{[3, 4]}}
+            child {node {\texttt{[3]}}}
+            child {node {\texttt{[4]}}
+            };
+            % \node {[1, 2]}
+            % child {node {left}}
+            % child {node {right}
+            %     child {node {child}}
+            %     child {node {child}}
+            % };
+            % \node {{[1, 2]}
+            % child {node {left}}
+            % chile {node {right}}
+            % };
+        \end{tikzpicture}
+    \end{minipage}
+    \begin{minipage}[c]{0.6in}
+        \begin{center}
+            \begin{tikzpicture}
+                \draw[-{Latex[length=3mm, width=2mm]},blue,line width=0.4mm] (0,0) -- (0.8,0) node[pos=0.33,above] {};
+            \end{tikzpicture}
+        \end{center}
+    \end{minipage}
+    \begin{minipage}[t]{1.6in}
+        \begin{tikzpicture}
+            % \node {[1, 2]}
+            % child {node {[1]}}
+            % child {node {[2]}
+            % };
+            % \node at(2, 0) {[3, 4]}
+            % child {node {[3]}}
+            % child {node {[4]}
+            % };
+            \node {\texttt{[1, 2, 3, 4]}}
+            child {node at (-0.6,0) {\texttt{[1, 2]}}
+                child {node {\texttt{[1]}}}
+                child {node {\texttt{[2]}}}
+            }
+            child {node at (0.6,0) {\texttt{[3, 4]}}
+                child {node {\texttt{[3]}}}
+                child {node {\texttt{[4]}}}
+            };
+        \end{tikzpicture}
+    \end{minipage}
+\end{table}
+
+\noindent $\square$ \textbf{Top - down}
+\begin{itemize}[label = $\circ$]
+    \item Quy trình
+    \begin{enumerate}
+        \item Sử dụng phương pháp đệ quy, bắt đầu từ gốc.
+        \item Chia dãy ban đầu thành hai nửa, xây dựng cây cho từng nửa và gộp kết quả vào nút cha.
+    \end{enumerate}
+    \item Độ phức tạp: \texttt{O(n)} (với n là số phần tử có trong mảng)
+    \item Ví dụ:
+    \begin{itemize}[label = $\bullet$]
+        \item Nếu mảng $[1,\,2,\,3,\,4]$, ta chia thành hai nửa $[1,\,2]$ và $[3,\,4]$, tiếp tục chia nhỏ cho đến khi chỉ còn 1 phần tử.
+    \end{itemize}
+\end{itemize}
+\begin{table}[tbh!]
+    \large
+    \begin{minipage}[t]{1.6in}
+        \begin{center}
+            \begin{tikzpicture}
+                \node {\texttt{[1, 2, 3, 4]}};
+                % \node {[1, 2]}
+                % child {node {left}}
+                % child {node {right}
+                %     child {node {child}}
+                %     child {node {child}}
+                % };
+                % \node {{[1, 2]}
+                % child {node {left}}
+                % chile {node {right}}
+                % };
+            \end{tikzpicture}
+        \end{center}
+    \end{minipage}
+    \begin{minipage}[c]{0.5in}
+        \begin{center}
+            \begin{tikzpicture}
+                \draw[-{Latex[length=3mm, width=2mm]},blue,line width=0.4mm] (0,0) -- (0.8,0) node[pos=0.33,above] {};
+            \end{tikzpicture}
+        \end{center}
+    \end{minipage}
+    \begin{minipage}[t]{1.6in}
+        \begin{center}
+            \begin{tikzpicture}
+                \node {\texttt{[1, 2, 3, 4]}}
+                child {node {\texttt{[1, 2]}}}
+                child {node {\texttt{[3, 4]}}
+                };
+                % \node {[1, 2]}
+                % child {node {left}}
+                % child {node {right}
+                %     child {node {child}}
+                %     child {node {child}}
+                % };
+                % \node {{[1, 2]}
+                % child {node {left}}
+                % chile {node {right}}
+                % };
+            \end{tikzpicture}
+        \end{center}
+    \end{minipage}
+    \begin{minipage}[c]{0.5in}
+        \begin{center}
+            \begin{tikzpicture}
+                \draw[-{Latex[length=3mm, width=2mm]},blue,line width=0.4mm] (0,0) -- (0.8,0) node[pos=0.33,above] {};
+            \end{tikzpicture}
+        \end{center}
+    \end{minipage}
+    \begin{minipage}[t]{1.6in}    
+        \begin{tikzpicture}
+            % \node {[1, 2]}
+            % child {node {[1]}}
+            % child {node {[2]}
+            % };
+            % \node at(2, 0) {[3, 4]}
+            % child {node {[3]}}
+            % child {node {[4]}
+            % };
+            \node {\texttt{[1, 2, 3, 4]}}
+            child {node at (-0.6,0) {\texttt{[1, 2]}}
+                child {node {\texttt{[1]}}}
+                child {node {\texttt{[2]}}}
+            }
+            child {node at (0.6,0) {\texttt{[3, 4]}}
+                child {node {\texttt{[3]}}}
+                child {node {\texttt{[4]}}}
+            };
+        \end{tikzpicture}
+    \end{minipage}
+\end{table}
+
+\subsection{Cập nhật}
+\hspace{0.5cm}Cập nhật giá trị trong mảng đồng thời điều chỉnh các nút liên quan trong cây.\medskip
+
+\noindent $\square$ \textbf{Ví dụ:} Đối với bài toán \textbf{truy vấn tổng}. Giả sử có mảng gồm 4 phần tử $\{1,4,3,6\}$, sau khi xây dựng bằng phương pháp \textit{top - down} được cây như sau:
+
+\begin{table}[tbh!]
+    \large
+    \begin{minipage}[t]{1.6in}
+        \begin{center}
+            \begin{tikzpicture}
+                \node at (-1.5,0) {\texttt{[1]}};
+                \node at (-0.5,0) {\texttt{[4]}};
+                \node at (0.5,0) {\texttt{[3]}};
+                \node at (1.5,0) {\texttt{[6]}};
+            \end{tikzpicture}
+        \end{center}
+    \end{minipage}
+    \begin{minipage}[c]{0.45in}
+        \begin{center}
+            \begin{tikzpicture}
+                \draw[-{Latex[length=3mm, width=2mm]},blue,line width=0.4mm] (0,0) -- (0.8,0) node[pos=0.33,above] {};
+            \end{tikzpicture}
+        \end{center}
+    \end{minipage}
+    \begin{minipage}[t]{1.6in}
+        \begin{tikzpicture}
+            \node {\texttt{[5]}}
+            child {node {\texttt{[1]}}}
+            child {node {\texttt{[4]}}
+            };
+            \node at(2, 0) {\texttt{[9]}}
+            child {node {\texttt{[3]}}}
+            child {node {\texttt{[6]}}
+            };
+        \end{tikzpicture}
+    \end{minipage}
+    \begin{minipage}[c]{0.6in}
+        \begin{center}
+            \begin{tikzpicture}
+                \draw[-{Latex[length=3mm, width=2mm]},blue,line width=0.4mm] (0,0) -- (0.8,0) node[pos=0.33,above] {};
+            \end{tikzpicture}
+        \end{center}
+    \end{minipage}
+    \begin{minipage}[t]{1.6in}
+        \begin{tikzpicture}
+            \node {\texttt{[14]}}
+            child {node at (-0.3,0) {\texttt{[5]}}
+                child {node {\texttt{[1]}}}
+                child {node {\texttt{[4]}}}
+            }
+            child {node at (0.3,0) {\texttt{[9]}}
+                child {node {\texttt{[3]}}}
+                child {node {\texttt{[6]}}}
+            };
+        \end{tikzpicture}
+    \end{minipage}
+\end{table}
+  
+
+\noindent $\square$ \textbf{Cập nhật điểm (Point Update)}
+\begin{itemize}[label = $\circ$]
+    \item Mục tiêu: Thay đổi một phần tử tại vị trí $i$ trong mảng.
+    \item Quy trình
+    \begin{enumerate}
+        \item Tìm nút lá tương ứng với vị trí $i$.
+        \item Cập nhật giá trị tại nút lá.
+        \item Di chuyển từ nút lá lên gốc, cập nhật các nút cha dựa trên các nút con.
+    \end{enumerate}
+    \item Độ phức tạp: \texttt{O(logn)} (với n là số phần tử có trong mảng)
+    \item Nếu muốn cập nhật phần tử thứ 4 lên 11, đầu tiên phải đệ quy để tìm phần tử thứ 4 trước.
+    \begin{table}[tbh!]
+        \large
+        \begin{minipage}[t]{1.6in}
+            \begin{tikzpicture}
+                \node {\texttt{\textcolor{blue}{[14]}}}
+                child {node at (-0.3,0) {\texttt{[5]}}
+                    child {node {\texttt{[1]}}}
+                    child {node {\texttt{[4]}}}
+                }
+                child {node at (0.3,0) {\texttt{{[9]}}}
+                    child {node {\texttt{[3]}}}
+                    child {node {\texttt{{[6]}}}}
+                };
+            \end{tikzpicture}
+        \end{minipage}
+        \begin{minipage}[c]{0.5in}
+            \begin{center}
+                \begin{tikzpicture}
+                    \draw[-{Latex[length=3mm, width=2mm]},blue,line width=0.4mm] (0,0) -- (0.8,0) node[pos=0.33,above] {};
+                \end{tikzpicture}
+            \end{center}
+        \end{minipage}
+        \begin{minipage}[t]{1.6in}
+            \begin{tikzpicture}
+                \node {\texttt{\textcolor{blue}{[14]}}}
+                child {node at (-0.3,0) {\texttt{[5]}}
+                    child {node {\texttt{[1]}}}
+                    child {node {\texttt{[4]}}}
+                }
+                child {node at (0.3,0) {\texttt{\textcolor{blue}{[9]}}}
+                    child {node {\texttt{[3]}}}
+                    child {node {\texttt{{[6]}}}}
+                };
+            \end{tikzpicture}
+        \end{minipage}
+        \begin{minipage}[c]{0.5in}
+            \begin{center}
+                \begin{tikzpicture}
+                    \draw[-{Latex[length=3mm, width=2mm]},blue,line width=0.4mm] (0,0) -- (0.8,0) node[pos=0.33,above] {};
+                \end{tikzpicture}
+            \end{center}
+        \end{minipage}
+        \begin{minipage}[t]{1.6in}    
+            \begin{tikzpicture}
+                % \node {[1, 2]}
+                % child {node {[1]}}
+                % child {node {[2]}
+                % };
+                % \node at(2, 0) {[3, 4]}
+                % child {node {[3]}}
+                % child {node {[4]}
+                % };
+                \node {\texttt{\textcolor{blue}{[14]}}}
+                child {node at (-0.3,0) {\texttt{{[5]}}}
+                    child {node {\texttt{[1]}}}
+                    child {node {\texttt{[4]}}}
+                }
+                child {node at (0.3,0) {\texttt{\textcolor{blue}{[9]}}}
+                    child {node {\texttt{[3]}}}
+                    child {node {\texttt{\textcolor{blue}{[6]}}}}
+                };
+            \end{tikzpicture}
+        \end{minipage}
+    \end{table}
+    \item Sau khi đã tìm được thì tiến hành cập nhật phần tử thứ 4 từ 6 lên 11.
+\end{itemize}
+
+\begin{table}[tbh!]
+    \large
+    \begin{minipage}[t]{1.6in}
+        \begin{tikzpicture}
+            \node {\texttt{[14]}}
+            child {node at (-0.3,0) {\texttt{{[5]}}}
+                child {node {\texttt{[1]}}}
+                child {node {\texttt{[4]}}}
+            }
+            child {node at (0.3,0) {\texttt{[9]}}
+                child {node {\texttt{[3]}}}
+                child {node {\texttt{\textcolor{red}{[11]}}}}
+            };
+        \end{tikzpicture}
+    \end{minipage}
+    \begin{minipage}[c]{0.5in}
+        \begin{center}
+            \begin{tikzpicture}
+                \draw[-{Latex[length=3mm, width=2mm]},blue,line width=0.4mm] (0,0) -- (0.8,0) node[pos=0.33,above] {};
+            \end{tikzpicture}
+        \end{center}
+    \end{minipage}
+    \begin{minipage}[t]{1.6in}
+        \begin{tikzpicture}
+            \node {\texttt{[14]}}
+            child {node at (-0.3,0) {\texttt{[5]}}
+                child {node {\texttt{[1]}}}
+                child {node {\texttt{[4]}}}
+            }
+            child {node at (0.3,0) {\texttt{\textcolor{red}{[14]}}}
+                child {node {\texttt{[3]}}}
+                child {node {\texttt{\textcolor{red}{[11]}}}}
+            };
+        \end{tikzpicture}
+    \end{minipage}
+    \begin{minipage}[c]{0.5in}
+        \begin{center}
+            \begin{tikzpicture}
+                \draw[-{Latex[length=3mm, width=2mm]},blue,line width=0.4mm] (0,0) -- (0.8,0) node[pos=0.33,above] {};
+            \end{tikzpicture}
+        \end{center}
+    \end{minipage}
+    \begin{minipage}[t]{1.6in}    
+        \begin{tikzpicture}
+            % \node {[1, 2]}
+            % child {node {[1]}}
+            % child {node {[2]}
+            % };
+            % \node at(2, 0) {[3, 4]}
+            % child {node {[3]}}
+            % child {node {[4]}
+            % };
+            \node {\texttt{\textcolor{red}{[19]}}}
+            child {node at (-0.3,0) {\texttt{[5]}}
+                child {node {\texttt{[1]}}}
+                child {node {\texttt{[4]}}}
+            }
+            child {node at (0.3,0) {\texttt{\textcolor{red}{[14]}}}
+                child {node {\texttt{[3]}}}
+                child {node {\texttt{\textcolor{red}{[11]}}}}
+            };
+        \end{tikzpicture}
+    \end{minipage}
+\end{table}
+
+\noindent $\square$ \textbf{Cập nhật đoạn (Range Update)}
+\begin{itemize}[label = $\circ$]
+    \item Mục tiêu: Cập nhật giá trị cho một đoạn $[l,\,r]$.
+    \item Phương pháp phổ biến: \textit{Lazy Propagation} hay cập nhật lười, sử dụng mảng phụ để trì hoãn việc cập nhật khi cần thiết. Nói cách khác, ta tạo thêm một cây phân đoạn mới chỉ để chứa giá trị mới cập nhật nhằm giảm độ phức tạp xuống.
+    \item Độ phức tạp: \texttt{O(logn)} (với n là số phần tử có trong mảng)
+    \item Nếu cần cập nhật các phần tử thứ $2,\,3,\,4$ lên 5 giá trị, đầu tiên phải truy tới node và dùng cập nhật lười thay vì cập nhật hết các nút lá.
+    \begin{table}[tbh!]
+        \large
+        \centering
+        \begin{minipage}[t]{1.8in}
+            \begin{tikzpicture}
+                \node at (0,1) {\texttt{Segment Tree}};
+                \node {\texttt{\textcolor{blue}{[19]}}}
+                child {node at (-0.3,0) {\texttt{{[5]}}}
+                    child {node {\texttt{[1]}}}
+                    child {node {\texttt{[4]}}}
+                }
+                child {node at (0.3,0) {\texttt{[14]}}
+                    child {node {\texttt{[3]}}}
+                    child {node {\texttt{{[11]}}}}
+                };
+            \end{tikzpicture}
+        \end{minipage}
+        \begin{minipage}[c]{1in}
+            \begin{center}
+                \begin{tikzpicture}
+                    \draw[-{Latex[length=3mm, width=2mm]},blue,line width=0.4mm] (0,1) -- (0,0) node[pos=0.33,above] {};
+                \end{tikzpicture}
+            \end{center}
+        \end{minipage}
+        \begin{minipage}[t]{1.6in}
+            \begin{tikzpicture}
+                \node at (0,1) {\texttt{Lazy Propagation Tree}};
+                \node {\texttt{\textcolor{red}{[5]}}}
+                child {node at (-0.3,0) {\texttt{[0]}}
+                    child {node {\texttt{[0]}}}
+                    child {node {\texttt{[0]}}}
+                }
+                child {node at (0.3,0) {\texttt{{[0]}}}
+                    child {node {\texttt{[0]}}}
+                    child {node {\texttt{{[0]}}}}
+                };
+            \end{tikzpicture}
+        \end{minipage}
+    \end{table}
+    \begin{table}[tbh!]
+        \large
+        \centering
+        \begin{minipage}[t]{1.8in}
+            \begin{tikzpicture}
+                \node at (0,1) {\texttt{Segment Tree}};
+                \node {\texttt{\textcolor{blue}{[19]}}}
+                child {node at (-0.3,0) {\texttt{\textcolor{blue}{[5]}}}
+                    child {node {\texttt{[1]}}}
+                    child {node {\texttt{[4]}}}
+                }
+                child {node at (0.3,0) {\texttt{\textcolor{blue}{[14]}}}
+                    child {node {\texttt{[3]}}}
+                    child {node {\texttt{{[11]}}}}
+                };
+            \end{tikzpicture}
+        \end{minipage}
+        \begin{minipage}[c]{1in}
+            \begin{center}
+                \begin{tikzpicture}
+                    \draw[-{Latex[length=3mm, width=2mm]},blue,line width=0.4mm] (0,1) -- (0,0) node[pos=0.33,above] {};
+                \end{tikzpicture}
+            \end{center}
+        \end{minipage}
+        \begin{minipage}[t]{1.6in}
+            \begin{tikzpicture}
+                \node at (0,1) {\texttt{Lazy Propagation Tree}};
+                \node {\texttt{{[0]}}}
+                child {node at (-0.3,0) {\texttt{\textcolor{red}{[5]}}}
+                    child {node {\texttt{[0]}}}
+                    child {node {\texttt{[0]}}}
+                }
+                child {node at (0.3,0) {\texttt{\textcolor{red}{[5]}}}
+                    child {node {\texttt{[0]}}}
+                    child {node {\texttt{{[0]}}}}
+                };
+            \end{tikzpicture}
+        \end{minipage}
+    \end{table}
+    \begin{table}[tbh!]
+        \large
+        \centering
+        \begin{minipage}[t]{1.8in}
+            \begin{tikzpicture}
+                \node at (0,1) {\texttt{Segment Tree}};
+                \node {\texttt{\textcolor{blue}{[19]}}}
+                child {node at (-0.3,0) {\texttt{\textcolor{blue}{[5]}}}
+                    child {node {\texttt{[1]}}}
+                    child {node {\texttt{\textcolor{blue}{[4]}}}}
+                }
+                child {node at (0.3,0) {\texttt{\textcolor{red}{[24]}}}
+                    child {node {\texttt{[3]}}}
+                    child {node {\texttt{{[11]}}}}
+                };
+            \end{tikzpicture}
+        \end{minipage}
+        \begin{minipage}[c]{1in}
+            \begin{center}
+                \begin{tikzpicture}
+                    \draw[-{Latex[length=3mm, width=2mm]},blue,line width=0.4mm] (0,1) -- (0,0) node[pos=0.33,above] {};
+                \end{tikzpicture}
+            \end{center}
+        \end{minipage}
+        \begin{minipage}[t]{1.6in}
+            \begin{tikzpicture}
+                \node at (0,1) {\texttt{Lazy Propagation Tree}};
+                \node {\texttt{{[0]}}}
+                child {node at (-0.3,0) {\texttt{{[0]}}}
+                    child {node {\texttt{[0]}}}
+                    child {node {\texttt{\textcolor{red}{[5]}}}}
+                }
+                child {node at (0.3,0) {\texttt{{[0]}}}
+                    child {node {\texttt{\textcolor{red}{[5]}}}}
+                    child {node {\texttt{\textcolor{red}{[5]}}}}
+                };
+            \end{tikzpicture}
+        \end{minipage}
+    \end{table}
+    \begin{table}[tbh!]
+        \large
+        \centering
+        \begin{minipage}[t]{1.8in}
+            \begin{tikzpicture}
+                \node at (0,1) {\texttt{Segment Tree}};
+                \node {\texttt{\textcolor{blue}{[19]}}}
+                child {node at (-0.3,0) {\texttt{\textcolor{blue}{[5]}}}
+                    child {node {\texttt{[1]}}}
+                    child {node {\texttt{\textcolor{red}{[9]}}}}
+                }
+                child {node at (0.3,0) {\texttt{\textcolor{red}{[24]}}}
+                    child {node {\texttt{[3]}}}
+                    child {node {\texttt{{[11]}}}}
+                };
+            \end{tikzpicture}
+        \end{minipage}
+        \begin{minipage}[c]{1in}
+            \begin{center}
+                \begin{tikzpicture}
+                    \draw[-{Latex[length=3mm, width=2mm]},blue,line width=0.4mm] (0,1) -- (0,0) node[pos=0.33,above] {};
+                \end{tikzpicture}
+            \end{center}
+        \end{minipage}
+        \begin{minipage}[t]{1.6in}
+            \begin{tikzpicture}
+                \node at (0,1) {\texttt{Lazy Propagation Tree}};
+                \node {\texttt{{[0]}}}
+                child {node at (-0.3,0) {\texttt{{[0]}}}
+                    child {node {\texttt{[0]}}}
+                    child {node {\texttt{{[0]}}}}
+                }
+                child {node at (0.3,0) {\texttt{{[0]}}}
+                    child {node {\texttt{\textcolor{red}{[5]}}}}
+                    child {node {\texttt{\textcolor{red}{[5]}}}}
+                };
+            \end{tikzpicture}
+        \end{minipage}
+    \end{table}
+    \begin{table}[tbh!]
+        \large
+        \centering
+        \begin{minipage}[t]{1.8in}
+            \begin{tikzpicture}
+                \node at (0,1) {\texttt{Segment Tree}};
+                \node {\texttt{\textcolor{blue}{[19]}}}
+                child {node at (-0.3,0) {\texttt{\textcolor{red}{[10]}}}
+                    child {node {\texttt{[1]}}}
+                    child {node {\texttt{\textcolor{red}{[9]}}}}
+                }
+                child {node at (0.3,0) {\texttt{\textcolor{red}{[24]}}}
+                    child {node {\texttt{[3]}}}
+                    child {node {\texttt{{[11]}}}}
+                };
+            \end{tikzpicture}
+        \end{minipage}
+        \begin{minipage}[c]{1in}
+            \begin{center}
+                \begin{tikzpicture}
+                    \draw[-{Latex[length=3mm, width=2mm]},blue,line width=0.4mm] (0,1) -- (0,0) node[pos=0.33,above] {};
+                \end{tikzpicture}
+            \end{center}
+        \end{minipage}
+        \begin{minipage}[t]{1.6in}
+            \begin{tikzpicture}
+                \node at (0,1) {\texttt{Lazy Propagation Tree}};
+                \node {\texttt{{[0]}}}
+                child {node at (-0.3,0) {\texttt{{[0]}}}
+                    child {node {\texttt{[0]}}}
+                    child {node {\texttt{{[0]}}}}
+                }
+                child {node at (0.3,0) {\texttt{{[0]}}}
+                    child {node {\texttt{\textcolor{red}{[5]}}}}
+                    child {node {\texttt{\textcolor{red}{[5]}}}}
+                };
+            \end{tikzpicture}
+        \end{minipage}
+    \end{table}
+    \begin{table}[tbh!]
+        \large
+        \centering
+        \begin{minipage}[t]{1.8in}
+            \begin{tikzpicture}
+                \node at (0,1) {\texttt{Segment Tree}};
+                \node {\texttt{\textcolor{red}{[34]}}}
+                child {node at (-0.3,0) {\texttt{\textcolor{red}{[10]}}}
+                    child {node {\texttt{[1]}}}
+                    child {node {\texttt{\textcolor{red}{[9]}}}}
+                }
+                child {node at (0.3,0) {\texttt{\textcolor{red}{[24]}}}
+                    child {node {\texttt{[3]}}}
+                    child {node {\texttt{{[11]}}}}
+                };
+            \end{tikzpicture}
+        \end{minipage}
+        \begin{minipage}[c]{1in}
+            \begin{center}
+                \begin{tikzpicture}
+                    % \draw[-{Latex[length=3mm, width=2mm]},blue,line width=0.4mm] (0,1) -- (0,0) node[pos=0.33,above] {};
+                \end{tikzpicture}
+            \end{center}
+        \end{minipage}
+        \begin{minipage}[t]{1.6in}
+            \begin{tikzpicture}
+                \node at (0,1) {\texttt{Lazy Propagation Tree}};
+                \node {\texttt{{[0]}}}
+                child {node at (-0.3,0) {\texttt{{[0]}}}
+                    child {node {\texttt{[0]}}}
+                    child {node {\texttt{{[0]}}}}
+                }
+                child {node at (0.3,0) {\texttt{{[0]}}}
+                    child {node {\texttt{\textcolor{red}{[5]}}}}
+                    child {node {\texttt{\textcolor{red}{[5]}}}}
+                };
+            \end{tikzpicture}
+        \end{minipage}
+    \end{table}
+    \item \textit{Lazy Propagation} đóng vai trò làm trì hoãn việc cập nhật, giúp giảm thiểu độ phức tạp thời gian xuống.
+\end{itemize}
+
+
+\subsection{Truy vấn}
+\noindent $\square$ \textbf{Truy vấn đoạn (Range Query)}
+\begin{itemize}[label = $\circ$]
+    \item Tính toán giá trị (như tổng, max, min, gcd) trên một đoạn $[l,\,r]$.
+    \item Quy trình
+    \begin{enumerate}
+        \item Bắt đầu từ gốc, kiểm tra xem đoạn $[l,\,r]$ giao với đoạn của mỗi nút thế nào.
+        \item Nếu đoạn của nút hoàn toàn nằm trong $[l,\,r]$, sử dụng giá trị của nút đó.
+        \item Nếu không, đệ quy xuống hai nút con.
+        \item Kết hợp kết quả từ hai nút con để trả về kết quả cho đoạn cha.
+    \end{enumerate}
+    \item Độ phức tạp: \texttt{O(logn)} (với n là số phần tử có trong mảng)
+    \item Ví dụ: Truy vấn đoạn $[1,\,3]$ trong mảng $[1,\,2,\,3,\,4]$.
+    \begin{itemize}[label = $\bullet$]
+        \item Đệ quy để tìm các đoạn phù hợp.
+        \item Chính là $[1,\,2]$ tương ứng với giá trị 3 và $[3,\,3]$ tương ứng với giá trị 3 rồi cộng lại trả về 6.
+    \end{itemize}
+    \begin{table}[tbh!]
+        \large
+        \begin{minipage}[t]{1.6in}
+            \begin{tikzpicture}
+                \node {\texttt{\textcolor{blue}{[10]}}}
+                child {node at (-0.3,0) {\texttt{[3]}}
+                    child {node {\texttt{[1]}}}
+                    child {node {\texttt{[2]}}}
+                }
+                child {node at (0.3,0) {\texttt{{[7]}}}
+                    child {node {\texttt{[3]}}}
+                    child {node {\texttt{{[4]}}}}
+                };
+            \end{tikzpicture}
+        \end{minipage}
+        \begin{minipage}[c]{0.5in}
+            \begin{center}
+                \begin{tikzpicture}
+                    \draw[-{Latex[length=3mm, width=2mm]},blue,line width=0.4mm] (0,0) -- (0.8,0) node[pos=0.33,above] {};
+                \end{tikzpicture}
+            \end{center}
+        \end{minipage}
+        \begin{minipage}[t]{1.6in}
+            \begin{tikzpicture}
+                \node {\texttt{\textcolor{blue}{[10]}}}
+                child {node at (-0.3,0) {\texttt{\textcolor{blue}{[3]}}}
+                    child {node {\texttt{[1]}}}
+                    child {node {\texttt{[2]}}}
+                }
+                child {node at (0.3,0) {\texttt{\textcolor{blue}{[7]}}}
+                    child {node {\texttt{[3]}}}
+                    child {node {\texttt{{[4]}}}}
+                };
+            \end{tikzpicture}
+        \end{minipage}
+        \begin{minipage}[c]{0.5in}
+            \begin{center}
+                \begin{tikzpicture}
+                    \draw[-{Latex[length=3mm, width=2mm]},blue,line width=0.4mm] (0,0) -- (0.8,0) node[pos=0.33,above] {};
+                \end{tikzpicture}
+            \end{center}
+        \end{minipage}
+        \begin{minipage}[t]{1.6in}    
+            \begin{tikzpicture}
+                % \node {[1, 2]}
+                % child {node {[1]}}
+                % child {node {[2]}
+                % };
+                % \node at(2, 0) {[3, 4]}
+                % child {node {[3]}}
+                % child {node {[4]}
+                % };
+                \node {\texttt{\textcolor{blue}{[10]}}}
+                child {node at (-0.3,0) {\texttt{\textcolor{red}{[3]}}}
+                    child {node {\texttt{[1]}}}
+                    child {node {\texttt{[2]}}}
+                }
+                child {node at (0.3,0) {\texttt{\textcolor{blue}{[7]}}}
+                    child {node {\texttt{\textcolor{red}{[3]}}}}
+                    child {node {\texttt{{[4]}}}}
+                };
+            \end{tikzpicture}
+        \end{minipage}
+    \end{table}
+\end{itemize}
+
+
+
+
+
+\[
+\begin{array}{|c|c|c|}
+\hline
+\textbf{Hoạt động} & \textbf{Cách thực hiện} & \textbf{Độ phức tạp} \\
+\hline
+\text{Xây dựng (Bottom-up)} & \text{Từ lá lên gốc} & O(n) \\
+\hline
+\text{Xây dựng (Top-down)} & \text{Đệ quy từ gốc} & O(n) \\
+\hline
+\text{Cập nhật điểm} & \text{Điều chỉnh từ lá lên gốc} & O(\log n) \\
+\hline
+\text{Cập nhật đoạn} & \text{Lazy Propagation} & O(\log n) \\
+\hline
+\text{Truy vấn đoạn} & \text{Đệ quy, kết hợp giá trị hai nút con} & O(\log n) \\
+\hline
+\end{array}
+\]
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Một số kỹ thuật trên cây phân đoạn}
+Cây phân đoạn (Segment Tree) có thể được tối ưu và mở rộng với nhiều kỹ thuật khác nhau để xử lý các bài toán phức tạp hơn. Dưới đây là mô tả chi tiết một số kỹ thuật nổi bật:
+\subsubsection{Lazy Propagation}
+
+\begin{itemize}[label = $\circ$]
+    \item Mục tiêu: Lazy Propagation là một kỹ thuật tối ưu để xử lý \textbf{cập nhật đoạn} (\([l, r]\)) và \textbf{truy vấn đoạn} hiệu quả mà không cần cập nhật toàn bộ cây ngay lập tức.
+    \item Ý tưởng chính: 
+        \begin{itemize} [label = $\bullet$]
+            \item \textbf{Trì hoãn việc cập nhật:} Lưu thông tin cập nhật tại nút hiện tại thay vì cập nhật ngay trên các nút con. Việc cập nhật chỉ thực hiện khi thực sự cần (khi truy vấn hoặc tính toán trên đoạn đó).
+            \item Sử dụng mảng phụ \texttt{lazy[]} để lưu các cập nhật bị trì hoãn.
+        \end{itemize}
+    \item Độ phức tạp:
+    \begin{itemize}[label = $\bullet$]
+        \item Cập nhật đoạn: \texttt{O(logn)}.
+        \item Truy vấn đoạn: \texttt{O(logn)}.
+    \end{itemize}
+    \item Cách hoạt động: 
+        \begin{enumerate}
+            \item \textbf{Cập nhật đoạn \([l, r]\):}
+            \begin{itemize} [label = $\bullet$]
+                \item Lưu giá trị cần cập nhật vào \texttt{lazy[]} tại nút hiện tại.
+                \item Không thực hiện cập nhật ngay trên các nút con, giảm công việc đệ quy.
+            \end{itemize}
+            \item \textbf{Khi truy vấn hoặc cần cập nhật thực tế:}
+            \begin{itemize} [label = $\bullet$]
+                \item Kiểm tra và "đẩy" các giá trị trong \texttt{lazy[]} xuống các nút con.
+                \item Cập nhật giá trị tại các nút liên quan.
+            \end{itemize}
+        \end{enumerate}    
+\end{itemize}
+
+\subsubsection{Persistent Segment Tree}
+
+\begin{itemize}[label = $\circ$]
+    \item Mục tiêu: Persistent Segment Tree cho phép lưu trạng thái của cây tại mỗi thời điểm (phiên bản), hỗ trợ truy vấn trên các phiên bản trước đó.
+    \item Ý tưởng chính: 
+        \begin{itemize} [label = $\bullet$]
+            \item Khi cập nhật, thay vì sửa trực tiếp, tạo ra một phiên bản mới bằng cách sao chép và sửa đổi các nút bị ảnh hưởng.
+            \item Các nút không bị thay đổi được tái sử dụng để tiết kiệm bộ nhớ.
+        \end{itemize}
+    \item Độ phức tạp:
+    \begin{itemize}[label = $\bullet$]
+        \item Cập nhật: \texttt{O(logn)}.
+        \item Truy vấn: \texttt{O(logn)}.
+        \item Bộ nhớ: \texttt{O(nlogn)}.
+    \end{itemize}
+    \item Cách hoạt động: 
+    \begin{enumerate}
+        \item Khi cập nhật hoặc thêm phiên bản mới:
+            \begin{itemize}[label = $\bullet$]
+                \item Tạo nút mới cho các nút bị ảnh hưởng.
+                \item Sao chép các nút không bị thay đổi từ phiên bản trước.
+            \end{itemize}
+        \item Mỗi phiên bản lưu trữ gốc (\texttt{root}) của cây mới, cho phép truy cập lại trạng thái cũ.
+    \end{enumerate}    
+\end{itemize}
+
+\subsubsection{Mergeable Segment Tree}
+
+\begin{itemize}[label = $\circ$]
+    \item Mục tiêu: Hỗ trợ hợp nhất hai cây phân đoạn (ứng với hai đoạn con) thành một cây duy nhất, thường áp dụng trong bài toán trên đồ thị hoặc xử lý nhiều tập hợp dữ liệu.
+    \item Ý tưởng chính: 
+        \begin{itemize} [label = $\bullet$]
+            \item Sử dụng phép hợp (\textit{merge}) để kết hợp thông tin từ hai cây con thành một cây mới.
+            \item Các phép toán phổ biến: tổng, max, min, gcd, ...
+        \end{itemize}
+    \item Độ phức tạp:
+    \begin{itemize}[label = $\bullet$]
+        \item Hợp nhất hai cây: \texttt{O(logn)}.
+    \end{itemize} 
+\end{itemize}
+
+
+
+\textbf{Tóm tắt}
+
+\[
+\begin{array}{|c|c|c|}
+\hline
+\textbf{Kỹ thuật} & \textbf{Ứng dụng} & \textbf{Độ phức tạp (Cập nhật / Truy vấn)} \\
+\hline
+\text{Lazy Propagation} & \text{Cập nhật đoạn hiệu quả} & O(\log n) \\
+\hline
+\text{Persistent Segment Tree} & \text{Lưu nhiều trạng thái} & O(\log n) \\
+\hline
+\text{Mergeable Segment Tree} & \text{Hợp nhất hai cây} & O(\log n) \\
+\hline
+\end{array}
+\]
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\pagebreak
+
+
+% \section{Ứng dụng của Segment Tree trong các bài toán Range Query}
+% \hspace{0.5cm}Phát biểu bài toán: Cho một mảng gồm $n$ số nguyên $A_1,\,A_2,\,\dots,\,A_n$ và $q$ truy vấn có dạng:
+% \begin{enumerate}[label = $\star$]
+%     \item $1\quad i\quad x$ : Gán giá trị $x$ cho $A_i$ %1 l r x:
+%     \item $2\quad l\quad r\quad x$ : Tăng giá trị $x$ cho các phần tử $A_l,\,A_{l + 1},\,\dots,\,A_r$
+%     \item $3\quad l\quad r$ : Truy vấn phù hợp theo từng bài toán.
+% \end{enumerate}
+
+% \noindent $\square$ Truy vấn đầu tiên chính là việc cập nhật 1 phần tử, hay chính xác là cập nhật một nốt lá của cây phân đoạn. Độ phức tạp là \texttt{O(logn)}.\medskip
+
+% \noindent\textbf{Mã giả}
+% \begin{minted}{python}
+% update(node, start, end, idx, value):
+%     if start > idx || end < idx return;
+%     if start == end:                         # Nếu là node lá
+%         tree[node] = value                   # Cập nhật giá trị mới
+%     else:
+%         mid = (start + end) / 2              # Tính vị trí giữa
+%         if start <= idx <= mid:              # Nếu idx thuộc nửa trái
+%             update(2 * node, start, mid, idx, value)
+%         else:                                # Nếu idx thuộc nửa phải
+%             update(2 * node + 1, mid + 1, end, idx, value)
+        
+%         # Cập nhật lại node cha từ tổng 2 node con
+%         tree[node] = tree[2 * node] + tree[2 * node + 1]
+% \end{minted}
+
+% \noindent $\square$ Truy vấn thứ hai chính là việc cập nhật 1 đoạn các phần tử, hay chính xác là cập nhật nhiều nốt lá của cây phân đoạn. Độ phức tạp tệ nhất là \texttt{O(n)} khi việc cập nhật là tuyến tính. Nhưng với sự kết hợp của phương pháp \textit{Lazy Propagation} thì độ phức tạp được giảm xuống \texttt{O(logn)}.\medskip
+
+% \noindent\textbf{Mã giả}
+% \begin{minted}{python}
+% propagate(node, start, end):
+%     if lazy[node] != 0:                              # Nếu có cập nhật trì hoãn
+%         tree[node] += (end - start + 1) * lazy[node] # Cập nhật giá trị cho node hiện tại
+%         if start != end:                              # Nếu không phải node lá
+%             lazy[2 * node] += lazy[node]             # Đánh dấu cập nhật cho con trái
+%             lazy[2 * node + 1] += lazy[node]         # Đánh dấu cập nhật cho con phải
+%         lazy[node] = 0                               # Xóa cờ lazy cho node hiện tại
+
+% \end{minted}
+
+% \begin{minted}{python}
+% update_range(node, start, end, L, R, value):
+%     propagate(node, start, end)                      # Đẩy giá trị trì hoãn trước khi cập nhật
+    
+%     if start > end or start > R or end < L:          # Nếu ngoài phạm vi cần cập nhật
+%         return
+    
+%     if start >= L and end <= R:                        # Nếu node hiện tại nằm hoàn toàn trong đoạn [L, R]
+%         tree[node] += (end - start + 1) * value      # Cập nhật giá trị node
+%         if start != end:                              # Nếu không phải node lá
+%             lazy[2 * node] += value                  # Đánh dấu cập nhật cho con trái
+%             lazy[2 * node + 1] += value              # Đánh dấu cập nhật cho con phải
+%         return
+    
+%     mid = (start + end) / 2                          # Chia đôi đoạn
+%     update_range(2 * node, start, mid, L, R, value)  # Cập nhật nửa trái
+%     update_range(2 * node + 1, mid + 1, end, L, R, value) # Cập nhật nửa phải
+%     tree[node] = tree[2 * node] + tree[2 * node + 1] # Cập nhật node hiện tại từ hai con
+
+% \end{minted}
+
+% \subsection{Bài toán về tính tổng của một mảng con liên tiếp}
+% \hspace{0.5cm}Đối với bài toán này, truy vấn thứ 3 chính là tính tổng đoạn các phần tử từ $A_l,\,A_{l + 1},\,\dots,\,A_r$.
+
+% \subsection{Bài toán về tìm giá trị nhỏ nhất/lớn nhất của một mảng con liên tiếp}
+% \hspace{0.5cm}Đối với bài toán này, truy vấn thứ 3 chính là tìm giá trị nhỏ nhất/lớn nhất trên mảng các phần tử từ $A_l,\,A_{l + 1},\,\dots,\,A_r$.
+
+% \pagebreak
+% % REFERENCES
+\section{Ứng dụng vào quản lý điểm số của sinh viên trong một hệ thống học tập}
+\begin{figure}[htbp]
+    \centering
+    \begin{tikzpicture}
+        
+        %%%%%%%%%%%%%%%%%%%
+        \draw[-] (6.5, 2.5) -- (8.5, 1.5) node[right] {}; % Trục hoành
+        \draw[-] (6.5, 2.5) -- (4, 2) node[right] {}; % Trục hoành
+        \draw[-] (6.5, 2.5) -- (4, 3) node[right] {}; % Trục hoành
+        \draw[-] (4, 1) -- (8.5, 1.5) node[right] {}; % Trục hoành
+        \draw[-] (4, 0) -- (8.5, -0.5) node[right] {}; % Trục hoành
+        \draw[-] (4, -1) -- (8.5, -0.5) node[right] {}; % Trục hoành
+        \draw[-] (10.5, 0.5) -- (8.5, 1.5) node[right] {}; % Trục hoành
+        \draw[-] (10.5, 0.5) -- (8.5, -0.5) node[right] {}; % Trục hoành
+        \node [draw=black, fill=green!30, minimum height=1cm, minimum width=1cm, thick] at (6.5, 2.5) {\text{10.0}};
+        \node [draw=black, fill=green!30, minimum height=1cm, minimum width=1cm, thick] at (8.5, 1.5) {\text{10.0}};
+        \draw[-] (10.5, 0.5) -- (12.5, -2.0) node[right] {}; % Trục hoành
+        \node [draw=black, fill=green!30, minimum height=1cm, minimum width=1cm, thick] at (8.5, -0.5) {\text{9.5}};
+        \node [draw=black, fill=green!30, minimum height=1cm, minimum width=1cm, thick] at (10.5, 0.5) {\text{10.0}};
+        %%%%%%%%%%%%%%%%%%%
+        \draw[-] (6.5, -2.5) -- (8.5, -3.5) node[right] {}; % Trục hoành
+        \draw[-] (6.5, -2.5) -- (4, -3) node[right] {}; % Trục hoành
+        \draw[-] (6.5, -2.5) -- (4, -2) node[right] {}; % Trục hoành
+        \draw[-] (4, -4) -- (8.5, -3.5) node[right] {}; % Trục hoành
+        \draw[-] (4, -5) -- (8.5, -5.5) node[right] {}; % Trục hoành
+        \draw[-] (4, -6) -- (8.5, -5.5) node[right] {}; % Trục hoành
+        \draw[-] (10.5, -4.5) -- (8.5, -3.5) node[right] {}; % Trục hoành
+        \draw[-] (10.5, -4.5) -- (8.5, -5.5) node[right] {}; % Trục hoành
+        \draw[-] (10.5, -4.5) -- (12.5, -2.0) node[right] {}; % Trục hoành
+        \node [draw=black, fill=green!30, minimum height=1cm, minimum width=1cm, thick] at (6.5, -2.5) {\text{9.0}};
+        \node [draw=black, fill=green!30, minimum height=1cm, minimum width=1cm, thick] at (8.5, -3.5) {\text{9.0}};
+        \node [draw=black, fill=green!30, minimum height=1cm, minimum width=1cm, thick] at (10.5, -4.5) {\text{9.5}};
+        \node [draw=black, fill=green!30, minimum height=1cm, minimum width=1cm, thick] at (8.5, -5.5) {\text{9.5}};
+        \node [draw=black, fill=green!30, minimum height=1cm, minimum width=1cm, thick] at (12.5, -2.0) {\text{10.0}};
+
+        
+        \node [draw=black, fill=red!30, minimum height=1cm, minimum width=6cm, thick] at (0, 4) {\text{Tên sinh viên}};
+        \node [draw=black, fill=white!30, minimum height=1cm, minimum width=6cm, thick] at (0, 3) {\text{Nguyễn Xuân Huy Hoàng 1}};
+        \node [draw=black, fill=white!30, minimum height=1cm, minimum width=6cm, thick] at (0, 2) {\text{Nguyễn Xuân Huy Hoàng 2}};
+        \node [draw=black, fill=white!30, minimum height=1cm, minimum width=6cm, thick] at (0, 1) {\text{Nguyễn Xuân Huy Hoàng 3}};
+        \node [draw=black, fill=white!30, minimum height=1cm, minimum width=6cm, thick] at (0, 0) {\text{Nguyễn Xuân Huy Hoàng 4}};
+        \node [draw=black, fill=white!30, minimum height=1cm, minimum width=6cm, thick] at (0, -1) {\text{Nguyễn Xuân Huy Hoàng 5}};
+        \node [draw=black, fill=white!30, minimum height=1cm, minimum width=6cm, thick] at (0, -2) {\text{Nguyễn Xuân Huy Hoàng 6}};
+        \node [draw=black, fill=white!30, minimum height=1cm, minimum width=6cm, thick] at (0, -3) {\text{Nguyễn Xuân Huy Hoàng 7}};
+        \node [draw=black, fill=white!30, minimum height=1cm, minimum width=6cm, thick] at (0, -4) {\text{Nguyễn Xuân Huy Hoàng 8}};
+        \node [draw=black, fill=white!30, minimum height=1cm, minimum width=6cm, thick] at (0, -5) {\text{Nguyễn Xuân Huy Hoàng 9}};
+        \node [draw=black, fill=white!30, minimum height=1cm, minimum width=6cm, thick] at (0, -6) {\text{Nguyễn Xuân Huy Hoàng 10}};
+
+        \node [draw=black, fill=white!30, minimum height=1cm, minimum width=2cm, thick] at (4, 0) {\text{9.5}};
+        \node [draw=black, fill=white!30, minimum height=1cm, minimum width=2cm, thick] at (4, 1) {\text{8.0}};
+        \node [draw=black, fill=white!30, minimum height=1cm, minimum width=2cm, thick] at (4, -1) {\text{6.5}};
+        \node [draw=black, fill=white!30, minimum height=1cm, minimum width=2cm, thick] at (4, 2) {\text{10.0}};
+        \node [draw=black, fill=white!30, minimum height=1cm, minimum width=2cm, thick] at (4, -2) {\text{7.5}};
+        \node [draw=black, fill=white!30, minimum height=1cm, minimum width=2cm, thick] at (4, 3) {\text{8.0}};
+        \node [draw=black, fill=white!30, minimum height=1cm, minimum width=2cm, thick] at (4, -3) {\text{9.0}};
+        \node [draw=black, fill=white!30, minimum height=1cm, minimum width=2cm, thick] at (4, -4) {\text{4.0}};
+        \node [draw=black, fill=white!30, minimum height=1cm, minimum width=2cm, thick] at (4, -5) {\text{7.5}};
+        \node [draw=black, fill=white!30, minimum height=1cm, minimum width=2cm, thick] at (4, -6) {\text{9.5}};
+        \node [draw=black, fill=red!30, minimum height=1cm, minimum width=2cm, thick] at (4, 4) {\text{Điểm}};
+
+        \node [draw=black, fill=white!30, minimum height=1cm, minimum width=1cm, thick] at (-3.5, 0) {\text{4}};
+        \node [draw=black, fill=white!30, minimum height=1cm, minimum width=1cm, thick] at (-3.5, 1) {\text{3}};
+        \node [draw=black, fill=white!30, minimum height=1cm, minimum width=1cm, thick] at (-3.5, -1) {\text{5}};
+        \node [draw=black, fill=white!30, minimum height=1cm, minimum width=1cm, thick] at (-3.5, 2) {\text{2}};
+        \node [draw=black, fill=white!30, minimum height=1cm, minimum width=1cm, thick] at (-3.5, -2) {\text{6}};
+        \node [draw=black, fill=white!30, minimum height=1cm, minimum width=1cm, thick] at (-3.5, 3) {\text{1}};
+        \node [draw=black, fill=white!30, minimum height=1cm, minimum width=1cm, thick] at (-3.5, -3) {\text{7}};
+        \node [draw=black, fill=white!30, minimum height=1cm, minimum width=1cm, thick] at (-3.5, -4) {\text{8}};
+        \node [draw=black, fill=white!30, minimum height=1cm, minimum width=1cm, thick] at (-3.5, -5) {\text{9}};
+        \node [draw=black, fill=white!30, minimum height=1cm, minimum width=1cm, thick] at (-3.5, -6) {\text{10}};
+        \node [draw=black, fill=red!30, minimum height=1cm, minimum width=1cm, thick] at (-3.5, 4) {\text{STT}};
+    \end{tikzpicture}
+\end{figure}
+
+\section*{1. Truy vấn tổng điểm nhanh chóng}
+\hspace{0.5cm}\textbf{Bài toán:} Tính tổng điểm của một nhóm sinh viên trong khoảng $[L, R]$.\medskip
+
+\textbf{Lợi ích:}  
+\begin{itemize}
+    \item Thời gian truy vấn là \textbf{$O(\log n)$}, nhanh hơn rất nhiều so với duyệt tuyến tính $O(n)$.  
+    \item Hệ thống có thể xử lý hàng nghìn hoặc hàng triệu sinh viên mà vẫn đảm bảo hiệu năng cao.  
+\end{itemize}
+
+\section*{2. Cập nhật điểm linh hoạt và hiệu quả}
+\hspace{0.5cm}\textbf{Bài toán:} Khi sinh viên được cập nhật điểm, cần cập nhật lại tổng điểm của nhóm sinh viên. \medskip
+
+\textbf{Lợi ích:}  
+\begin{itemize}
+    \item Segment Tree hỗ trợ \textbf{cập nhật một phần tử hoặc cả đoạn} trong $O(\log n)$.  
+    \item Giúp hệ thống dễ dàng cập nhật khi điểm số thay đổi, không cần tính toán lại toàn bộ.  
+\end{itemize}
+
+\section*{3. Hỗ trợ đa dạng loại truy vấn}
+\hspace{0.5cm}\textbf{Các bài toán:}  
+\begin{itemize}
+    \item Tìm \textbf{điểm cao nhất (max)}, \textbf{thấp nhất (min)}, hoặc \textbf{điểm trung bình} trong một đoạn.  
+    \item Truy vấn \textbf{tổng điểm} hoặc \textbf{đếm số sinh viên} có điểm trong khoảng $[L, R]$.  
+\end{itemize}
+\textbf{Lợi ích:}  
+\begin{itemize}
+    \item Chỉ cần điều chỉnh Segment Tree, có thể giải quyết nhiều dạng bài toán khác nhau.  
+\end{itemize}
+
+\section*{4. Quản lý dữ liệu thời gian thực (Real-time)}
+\hspace{0.5cm}Khi có nhiều yêu cầu truy vấn và cập nhật liên tục, Segment Tree đảm bảo \textbf{xử lý nhanh} và \textbf{trả về kết quả ngay lập tức}. \medskip
+
+Hệ thống sẽ hoạt động hiệu quả, tránh chậm trễ khi truy cập dữ liệu lớn.
+
+\section*{5. Hỗ trợ cập nhật đoạn (Lazy Propagation)}
+\hspace{0.5cm}\textbf{Bài toán:} Cập nhật điểm cho \textbf{toàn bộ sinh viên trong khoảng} $[L, R]$. \medskip
+
+\textbf{Lợi ích:}  
+\begin{itemize}
+    \item Lazy Propagation cho phép cập nhật nhanh toàn bộ đoạn mà không cần duyệt từng sinh viên.  
+    \item Giảm thiểu thời gian cập nhật từ $O(n)$ xuống $O(\log n)$.  
+\end{itemize}
+
+\section*{6. Tiết kiệm bộ nhớ và dễ triển khai}
+\hspace{0.5cm}\textbf{Lợi ích:}  
+\begin{itemize}
+    \item Segment Tree sử dụng bộ nhớ khoảng $4n$, phù hợp để triển khai trên các hệ thống lớn.  
+    \item Cấu trúc đơn giản, dễ mở rộng và bảo trì.  
+\end{itemize}
+
+\section*{Ví dụ cụ thể}
+\hspace{0.5cm}\textbf{Bài toán:}  
+\begin{itemize}
+    \item Truy vấn tổng điểm của sinh viên từ thứ 200 đến thứ 500.  
+    \item Cập nhật điểm số của sinh viên thứ 300.  
+    \item Cộng thêm 5 điểm cho toàn bộ sinh viên từ thứ 100 đến thứ 400.  
+\end{itemize}
+
+\textbf{Giải pháp với Segment Tree:}  
+\begin{itemize}
+    \item Truy vấn tổng điểm: $O(\log n)$.  
+    \item Cập nhật điểm cá nhân hoặc cả đoạn: $O(\log n)$.  
+    \item Hệ thống chạy nhanh ngay cả khi số sinh viên tăng lên hàng triệu.  
+\end{itemize}
+\pagebreak
+\section{Mã nguồn cho hệ thống quản lý điểm số của sinh viên}
+
+\begin{minted}[bgcolor=custombg, frame=lines, linenos, breaklines]{cpp}
+// nxxhoang - the dreamer
+#include<bits/stdc++.h>
+using namespace std;
+
+struct Student {
+    string name;
+    double score;
+    Student(string _name, double _score) : name(_name), score(_score) {}
+
+    bool operator<(const Student& other) const { return score < other.score; }
+    bool operator>(const Student& other) const { return score > other.score; }
+    bool operator==(const Student& other) const { return score == other.score && name == other.name; }
+    bool operator<=(const Student& other) const { return *this < other || *this == other; }
+    bool operator>=(const Student& other) const { return *this > other || *this == other; }
+    Student operator+(const Student& other) const { return Student(name, score + other.score); }
+};
+static double cur = 0;
+
+Student getMax(const Student& a, const Student& b) {cur = 0; return (a.score > b.score) ? a : b; }
+
+Student getMin(const Student& a, const Student& b) {cur = 1000; return (a.score < b.score) ? a : b; }
+
+Student getSum(const Student& a, const Student& b) { return a + b; }
+
+class SegmentTree {
+private:
+    vector<Student> tree;
+    vector<Student> lazy;
+    function<Student(const Student&, const Student&)> Function;
+
+    void build(int idx, int l, int r) {
+        if (l == r) {
+            string name;
+            double score;
+            cin >> name >> score;
+            tree[idx] = Student(name, score);
+            return;
+        }
+
+        int mid = (l + r) / 2;
+        build(2 * idx + 1, l, mid);
+        build(2 * idx + 2, mid + 1, r);
+
+        tree[idx] = Function(tree[2 * idx + 1], tree[2 * idx + 2]);
+    }
+
+public:
+    SegmentTree(int n, function<Student(const Student&, const Student&)> func) : Function(func) {
+        tree.resize(4 * n, Student("", cur));
+        lazy.resize(4 * n, Student("", cur));
+        build(0, 0, n - 1);
+    }
+
+    void pushLazy(int idx, int l, int r) {
+        if (lazy[idx].score != 0) {
+            tree[idx].score = lazy[idx].score;
+            if (l < r) {
+                lazy[2 * idx + 1].score = lazy[idx].score;
+                lazy[2 * idx + 2].score = lazy[idx].score;
+            }
+            lazy[idx].score = 0;
+        }
+    }
+
+    void update(int idx, int l, int r, int x, int y, double val) {
+        pushLazy(idx, l, r);
+        if (y < l || r < x) return;
+
+        if (l >= x && r <= y) {
+            lazy[idx].score = val;
+            pushLazy(idx, l, r);
+            return;
+        }
+
+        int mid = (l + r) / 2;
+        update(2 * idx + 1, l, mid, x, y, val);
+        update(2 * idx + 2, mid + 1, r, x, y, val);
+        tree[idx] = Function(tree[2 * idx + 1], tree[2 * idx + 2]);
+    }
+
+    Student query(int idx, int l, int r, int x, int y) {
+        pushLazy(idx, l, r);
+        if (r < x || y < l) return Student("", cur);
+
+        if (l >= x && r <= y) return tree[idx];
+
+        int mid = (l + r) / 2;
+        return Function(query(2 * idx + 1, l, mid, x, y), query(2 * idx + 2, mid + 1, r, x, y));
+    }
+};
+
+
+int main() {
+    int n, q;
+    cin >> n >> q;
+
+    unordered_map<string, function<Student(const Student&, const Student&)>> operations = {
+        {"max", getMax},
+        {"min", getMin},
+        {"sum", getSum}
+    };
+
+    string operationType;
+    cin >> operationType;
+
+    SegmentTree st(n, operations[operationType]);
+
+    while(q--) {
+        int typE, left, right;
+        cin >> typE >> left >> right;
+        if (typE == 1) {
+            double x;
+            cin >> x;
+            st.update(0, 0, n - 1, left - 1, right - 1, x);
+        } else {
+            Student stu = st.query(0, 0, n - 1, left - 1, right - 1);
+            cout << std::left << setw(10) << stu.name << std::right << setw(5) << stu.score << endl;
+        }
+    }
+    return 0;
+}
+\end{minted}
+
+Hệ thống này quản lý điểm số của sinh viên thông qua một cấu trúc dữ liệu cây phân đoạn (Segment Tree). Các sinh viên được lưu trữ dưới dạng đối tượng \texttt{Student} bao gồm tên và điểm số. Các phép toán trên cây phân đoạn như tìm giá trị lớn nhất, nhỏ nhất hoặc tổng điểm trong một khoảng được thực hiện thông qua các hàm khác nhau.
+
+\subsection{Cấu Trúc Dữ Liệu Sinh Viên}
+
+\hspace{0.5cm}\texttt{struct Student} đại diện cho một sinh viên, với các thuộc tính là \texttt{name} (tên) và \texttt{score} (điểm số). Các toán tử được định nghĩa cho lớp \texttt{Student} như sau:
+\begin{itemize}[label = $\circ$]
+  \item \texttt{operator<} so sánh điểm số giữa hai sinh viên.
+  \item \texttt{operator>} so sánh ngược lại điểm số giữa hai sinh viên.
+  \item \texttt{operator==} kiểm tra xem hai sinh viên có điểm số và tên giống nhau hay không.
+  \item \texttt{operator<=} và \texttt{operator>=} sử dụng \texttt{operator<} và \texttt{operator==} để xác định mối quan hệ giữa hai sinh viên.
+  \item \texttt{operator+} cộng điểm số của hai sinh viên và trả về một sinh viên mới với tên của một sinh viên và điểm số là tổng của điểm số.
+\end{itemize}
+
+\subsection{Các Hàm Phép Toán}
+
+\begin{itemize}[label = $\circ$]
+  \item \texttt{getMax}: Trả về sinh viên có điểm số cao hơn giữa hai sinh viên.
+  \item \texttt{getMin}: Trả về sinh viên có điểm số thấp hơn giữa hai sinh viên.
+  \item \texttt{getSum}: Trả về sinh viên có điểm số là tổng điểm số của hai sinh viên.
+\end{itemize}
+
+\subsection{Cây Phân Đoạn}
+
+\hspace{0.5cm}\texttt{class SegmentTree} là lớp đại diện cho cây phân đoạn, dùng để xử lý các phép toán trên một dãy sinh viên. Cây phân đoạn lưu trữ các sinh viên ở các nút của nó và hỗ trợ các phép toán như tìm giá trị lớn nhất, nhỏ nhất hoặc tổng điểm số trong một khoảng. 
+
+\subsubsection{Cấu Trúc Cây Phân Đoạn}
+\hspace{0.5cm}Cây phân đoạn lưu trữ:
+\begin{itemize}[label = $\circ$]
+  \item \texttt{tree}: Mảng lưu trữ các sinh viên ở các nút của cây.
+  \item \texttt{lazy}: Mảng lưu trữ các giá trị "lười" (lazy propagation) để tối ưu hóa các thao tác cập nhật.
+  \item \texttt{Function}: Hàm phép toán được áp dụng lên các sinh viên trong cây phân đoạn (max, min, sum).
+\end{itemize}
+
+\subsubsection{Phương Thức Chính}
+
+\begin{itemize}[label = $\circ$]
+  \item \texttt{build}: Xây dựng cây phân đoạn từ dữ liệu đầu vào. Đối với mỗi phạm vi, cây phân đoạn lưu trữ thông tin về sinh viên tại đó.
+  \item \texttt{pushLazy}: Xử lý các phép toán "lười" để đảm bảo rằng mọi cập nhật đều được áp dụng một cách chính xác.
+  \item \texttt{update}: Cập nhật giá trị trong một phạm vi của cây phân đoạn. Nếu có phép toán "lười", nó sẽ được đẩy xuống các nút con của cây.
+  \item \texttt{query}: Truy vấn giá trị trong một phạm vi của cây phân đoạn.
+\end{itemize}
+
+\subsection{Chương Trình Chính}
+
+\hspace{0.5cm}Chương trình chính thực hiện các bước sau:
+\begin{itemize}[label = $\circ$]
+  \item Nhập số lượng sinh viên \texttt{n} và số lượng truy vấn \texttt{q}.
+  \item Chọn loại phép toán (max, min, sum) để áp dụng trong cây phân đoạn.
+  \item Xây dựng cây phân đoạn với dữ liệu sinh viên và phép toán đã chọn.
+  \item Xử lý các truy vấn:
+  \begin{itemize}[label = $\bullet$]
+    \item Nếu là truy vấn cập nhật (typE = 1), cập nhật điểm cho sinh viên trong phạm vi từ \texttt{left} đến \texttt{right}.
+    \item Nếu là truy vấn truy xuất (typE = 2), tìm và in ra sinh viên có tên và điểm số trong phạm vi từ \texttt{left} đến \texttt{right}.
+  \end{itemize}
+\end{itemize}
+
+\subsection{Kết Luận}
+Hệ thống quản lý điểm số của sinh viên sử dụng cây phân đoạn để xử lý hiệu quả các phép toán trên dãy điểm số của sinh viên, đặc biệt là các phép toán yêu cầu truy vấn và cập nhật trong phạm vi. Các phép toán như tìm giá trị lớn nhất, nhỏ nhất hoặc tổng điểm trong một phạm vi được thực hiện thông qua các hàm hàm số học trên các đối tượng \texttt{Student}.
+
+\subsection{Kiểm thử}
+\subsubsection{Testcase 1}
+\textbf{Input}
+\begin{minted}[bgcolor=custombg, frame=lines, linenos, breaklines]{python}
+10 5
+max
+Hoang 7.6
+Huyen 9.1
+Hien 8.3
+Duc 4.2
+Linh 3.9
+Nhin 4.5
+Luc 6.5
+Nhuc 5.6
+Dung 10.0
+Lam 9.0
+2 1 10
+2 1 5
+1 1 3 9.3
+2 2 4
+1 3 6 4.0
+\end{minted}
+
+\noindent\textbf{Output}
+\begin{minted}[bgcolor=custombg, frame=lines, linenos, breaklines]{python}
+Dung         10
+Huyen       9.1
+Hien        9.3
+\end{minted}
+\subsubsection{Testcase 2}
+\textbf{Input}
+\begin{minted}[bgcolor=custombg, frame=lines, linenos, breaklines]{python}
+20 10
+min
+Thang 8.1
+Kien 6.9
+Hoa 7.4
+Minh 9.2
+Lan 8.5
+Anh 7.1
+Duy 6.4
+Tuan 7.8
+Hoa 8.0
+Mai 7.9
+Quang 9.0
+Chien 7.6
+Hieu 8.3
+Le 6.7
+Thao 8.9
+Tam 9.3
+Hien 7.2
+Khang 8.7
+Lam 9.1
+Son 7.0
+2 1 5
+1 3 8 8.5
+2 1 10
+1 2 6 9.0
+2 5 10
+1 8 15 6.3
+2 3 12
+1 6 9 7.7
+2 1 6
+2 4 7
+\end{minted}
+
+\noindent\textbf{Output}
+\begin{minted}[bgcolor=custombg, frame=lines, linenos, breaklines]{python}
+Kien        6.9
+Kien        6.9
+Mai         7.9
+Chien       6.3
+Anh         7.7
+Duy         7.7
+\end{minted}
+
+\pagebreak
+\section{Kết luận}
+\hspace{0.5cm}Segment Tree là một cấu trúc dữ liệu mạnh mẽ và linh hoạt, đóng vai trò quan trọng trong việc giải quyết các bài toán truy vấn và cập nhật trên đoạn một cách hiệu quả. Với khả năng xử lý các phép tính trên đoạn như tổng, giá trị lớn nhất, nhỏ nhất hoặc đếm phần tử, Segment Tree giúp giảm thiểu thời gian truy vấn và cập nhật từ $O(n)$ xuống $O(\log n)$.  \medskip
+
+Trong các hệ thống lớn như quản lý điểm số sinh viên, quản lý dữ liệu thời gian thực hay các bài toán cần cập nhật liên tục, việc sử dụng Segment Tree không chỉ đảm bảo hiệu năng cao mà còn tối ưu bộ nhớ và dễ triển khai. Tính năng mở rộng như Lazy Propagation giúp giải quyết các bài toán cập nhật đoạn nhanh chóng, làm cho Segment Tree trở thành công cụ không thể thiếu trong các ứng dụng thực tế.  \medskip
+
+Việc nắm vững và triển khai Segment Tree một cách chính xác sẽ mở ra nhiều hướng giải quyết cho các bài toán phức tạp, từ đó cải thiện đáng kể hiệu suất hệ thống và tiết kiệm tài nguyên.  
+
+
+
+\pagebreak
+\section{References}
+% \nocite{*}
+% \printbibliography[
+% heading=bibintoc,
+% title={References}
+% ]
+
+\label{sec:citations}
+Trích dẫn \textit{et. al.} \cite{segment_tree_vnoi,segment_tree_cpalgorithms,segment_tree_geeksforgeeks}
+
+\bibliographystyle{ieeetr}
+\bibliography{refs}
+
+\end{document}
